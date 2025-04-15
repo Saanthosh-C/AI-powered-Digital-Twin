@@ -17,7 +17,7 @@ const ENDPOINT_PLACEHOLDER = 'NO ENDPOINT ADDED'
 const SidebarHeader = () => (
   <div className="flex items-center gap-2">
     <Icon type="agno" size="xs" />
-    <span className="text-xs font-medium uppercase text-white">Agent UI</span>
+    <span className="text-xs font-medium uppercase text-white">AI TWIN</span>
   </div>
 )
 
@@ -265,7 +265,7 @@ const Sidebar = () => {
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                 >
                   <div className="text-xs font-medium uppercase text-primary">
-                    Agent
+                    AI
                   </div>
                   {isEndpointLoading ? (
                     <div className="flex w-full flex-col gap-2">

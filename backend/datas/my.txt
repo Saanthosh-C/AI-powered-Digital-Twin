@@ -1,33 +1,54 @@
-Sidharth Babu sidharthinfernal@gmail.com | 7010604488 | LinkedIN -https://www.linkedin.com/in/sidharth-babu-3351a7223/ Github - https://github.com/sidhuiwnl
-Professional Summary
-A proactive Full Stack Developer with hands-on experience in building web applications using Node.js and Next.js. Skilled in developing scalable user interfaces and backend systems, integrating third-party APIs, and automating workflows with scripting. Passionate about solving real-world problems using AI-driven automation tools and cloud technologies.
+Rahul Sharma(User) rahul.sharma@edu.in | 9876543210 | LinkedIn - https://www.linkedin.com/in/rahul-sharma-edu
+GitHub - https://github.com/rahul-sharma-learn
+Portfolio - https://rahul-sharma-academic.vercel.app
+Academic Summary
+
+A motivated Computer Science student with strong academic performance and hands-on experience in AI/ML projects. Skilled in developing educational applications, analyzing learning patterns, and implementing data-driven study strategies. Passionate about optimizing learning efficiency through technology and self-tracking.
 Technical Skills
 
-Languages: JavaScript, TypeScript, Python
-
-Frontend: Next.js, React.js, Tailwind CSS
-
-Backend: Node.js, Express.js
-
-Databases: MongoDB, PostgreSQL
-
-APIs & Integrations: REST, OAuth, JWT Authentication
-
-Cloud & DevOps: Cloudflare Workers, Docker
-
+Languages: Python, JavaScript, Java
+Data Science: Pandas, NumPy, Scikit-learn
+Web Development: Flask, React, Next.js
+Databases: SQLite, MongoDB
+Learning Tools: Anki, Notion, Obsidian
 Version Control: Git, GitHub
+Academic Performance
 
-Automation & Scripting: Web scraping, task automation
-Projects & Experience
-Surge
+CGPA: 8.7/10 (Semester 4)
+Strong Subjects: Algorithms (A+), Machine Learning (A)
+Improving Subjects: Database Systems (B), Operating Systems (B-)
+Learning Projects
 
-Developed a cutting-edge deployment platform that simplifies web application hosting and management.
+Smart Study Planner
 
-Implemented automated deployment pipelines and seamless integration with modern frameworks.
-Testimonial Management System
+    Developed an AI-powered scheduling system that adapts to learning patterns
 
-Developed a high-performance SaaS platform for managing and displaying testimonials, integrating MongoDB for scalable storage.
+    Integrated with Google Calendar and Notion API for seamless workflow
 
-Implemented API integrations for fetching and processing user data dynamically.
+    Implemented spaced repetition algorithms for optimal retention
 
-Automated workflows using scripting and API integrations.
+Learning Analytics Dashboard
+
+    Created visualization tools for tracking study hours and performance correlations
+
+    Automated data collection from various learning platforms
+
+    Used Python for data analysis and React for interactive visualizations
+
+Study Patterns (Last 30 Days)
+
+    Average Study Hours/Day: 3.8 hours
+
+    Most Productive Time: 9:00-11:00 AM
+
+    Preferred Learning Mode: Visual (70%), Auditory (20%), Kinesthetic (10%)
+
+    Common Distractions: Social Media (42% of interruptions)
+
+Learning Goals
+
+    Improve Database Systems grade to A- by next semester
+
+    Complete 2 research papers on educational AI by year-end
+
+    Increase productive study hours to 4.5/day while reducing distractions by 30%
