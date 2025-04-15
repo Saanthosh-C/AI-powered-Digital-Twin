@@ -1,0 +1,33 @@
+Sidharth Babu sidharthinfernal@gmail.com | 7010604488 | LinkedIN -https://www.linkedin.com/in/sidharth-babu-3351a7223/ Github - https://github.com/sidhuiwnl
+Professional Summary
+A proactive Full Stack Developer with hands-on experience in building web applications using Node.js and Next.js. Skilled in developing scalable user interfaces and backend systems, integrating third-party APIs, and automating workflows with scripting. Passionate about solving real-world problems using AI-driven automation tools and cloud technologies.
+Technical Skills
+
+Languages: JavaScript, TypeScript, Python
+
+Frontend: Next.js, React.js, Tailwind CSS
+
+Backend: Node.js, Express.js
+
+Databases: MongoDB, PostgreSQL
+
+APIs & Integrations: REST, OAuth, JWT Authentication
+
+Cloud & DevOps: Cloudflare Workers, Docker
+
+Version Control: Git, GitHub
+
+Automation & Scripting: Web scraping, task automation
+Projects & Experience
+Surge
+
+Developed a cutting-edge deployment platform that simplifies web application hosting and management.
+
+Implemented automated deployment pipelines and seamless integration with modern frameworks.
+Testimonial Management System
+
+Developed a high-performance SaaS platform for managing and displaying testimonials, integrating MongoDB for scalable storage.
+
+Implemented API integrations for fetching and processing user data dynamically.
+
+Automated workflows using scripting and API integrations.
