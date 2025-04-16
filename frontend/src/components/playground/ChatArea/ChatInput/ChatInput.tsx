@@ -7,6 +7,8 @@ import { usePlaygroundStore } from '@/store'
 import useAIChatStreamHandler from '@/hooks/useAIStreamHandler'
 import { useQueryState } from 'nuqs'
 import Icon from '@/components/ui/icon'
+import { UploadButton } from '@/utils/uploadthing'
+import axios from "axios"
 
 const ChatInput = () => {
   const { chatInputRef } = usePlaygroundStore()
@@ -33,7 +35,7 @@ const ChatInput = () => {
   }
 
   return (
-    <div className="relative mx-auto mb-1 flex w-full max-w-2xl items-end justify-center gap-x-2 font-geist">
+    <div className="relative mx-auto mb-1 flex w-full  flex-row  gap-2 max-w-2xl  justify-center gap-x-2 font-geist">
       <TextArea
         placeholder={'Ask anything'}
         value={inputMessage}
@@ -53,6 +55,7 @@ const ChatInput = () => {
         disabled={!selectedAgent}
         ref={chatInputRef}
       />
+      
       <Button
         onClick={handleSubmit}
         disabled={!selectedAgent || !inputMessage.trim() || isStreaming}
@@ -61,6 +64,33 @@ const ChatInput = () => {
       >
         <Icon type="send" color="primaryAccent" />
       </Button>
+      <UploadButton
+        endpoint={"imageUploader"}
+        onClientUploadComplete={async(file) => {
+          console.log("Files",file)
+
+          const currentFile = file[0].ufsUrl;
+          try {
+            const response = await axios.post("http://localhost:7777/file",{
+              file_url : currentFile
+            },{
+              headers : {
+                "Content-Type": "application/json",
+
+              }
+            })
+
+            console.log(response.data)
+          } catch (error) {
+            console.error(error)
+          }
+
+        }}
+        onUploadError={(error: Error) => {
+          // Do something with the error.
+          alert(`ERROR! ${error.message}`);
+        }}
+      />
     </div>
   )
 }

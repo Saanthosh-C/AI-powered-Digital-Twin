@@ -5,9 +5,9 @@ Install dependencies: `pip install openai lancedb tantivy elevenlabs sqlalchemy 
 
 from pathlib import Path
 from textwrap import dedent
-
+from fastapi import FastAPI
 from agno.agent import Agent
-from agno.knowledge.text import TextKnowledgeBase
+from agno.knowledge.url import UrlKnowledge
 from agno.storage.sqlite import SqliteStorage
 from agno.tools.eleven_labs import ElevenLabsTools
 from agno.tools.python import PythonTools
@@ -16,20 +16,38 @@ from agno.models.google import Gemini
 from agno.embedder.google import GeminiEmbedder
 from agno.playground import Playground, serve_playground_app
 from agno.tools.todoist import TodoistTools
+from pydantic import BaseModel
+from typing import List
+import json
 
-# Setup paths
+
+class FileUploadRequest(BaseModel):
+    file_url: str
+
 cwd = Path(__file__).parent
 tmp_dir = cwd.joinpath("tmp")
 tmp_dir.mkdir(parents=True, exist_ok=True)
 
+urlfile_Path = Path("datas/urls.txt")
+urlfile_Path.parent.mkdir(parents=True, exist_ok=True)
+
+
+if not urlfile_Path.exists():
+    urlfile_Path.write_text("")
+
+with urlfile_Path.open("r") as f:
+    urls = [line.strip() for line in f.readlines() if line.strip()]
+
+
 # Initialize knowledge & storage
-agent_knowledge = TextKnowledgeBase(
-    path="datas/my.txt",
+agent_knowledge = UrlKnowledge(
+
+        urls=urls,
     vector_db=LanceDb(
         uri=str(tmp_dir.joinpath("lancedb")),
         table_name="agno_assist_knowledge",
         search_type=SearchType.hybrid,
-        embedder=GeminiEmbedder(id="gemini-embedding-exp-03-07"),
+        embedder=GeminiEmbedder(id="gemini-embedding-exp-03-07",api_key="AIzaSyCleH8Tjoza7TAMhQsxz-t8dj_jskc7nMw"),
     ),
 )
 agent_storage = SqliteStorage(
@@ -39,7 +57,7 @@ agent_storage = SqliteStorage(
 
 agno_assist = Agent(
     name="Digital Twin",
-    model=Gemini(id="gemini-2.0-flash"),
+    model=Gemini(id="gemini-2.0-flash",api_key="AIzaSyCleH8Tjoza7TAMhQsxz-t8dj_jskc7nMw"),
     description=dedent("""\
        You are an AI-powered Digital Twin that mirrors a student's academic behavior, learning patterns, 
        and performance. Your purpose is to analyze historical data, predict future performance, 
@@ -95,8 +113,9 @@ agno_assist = Agent(
             voice_id="cgSgspJ2msm6clMCkdW9",
             model_id="eleven_multilingual_v2",
             target_directory=str(tmp_dir.joinpath("audio").resolve()),
+            api_key="sk_765f6dfaef18264b676562f6c849bc41d9c31282b6c301a3"
         ),
-        TodoistTools()
+        TodoistTools(api_token="7304b56106210a362687667b12f4b47997d72983")
     ],
     # To provide the agent with the chat history
     # We can either:
@@ -116,6 +135,23 @@ agno_assist = Agent(
 
 
 app = Playground(agents=[agno_assist]).get_app()
+
+@app.post("/file")
+async def upload_file(data : FileUploadRequest):
+    my_txt_path = Path("datas/urls.txt")
+    my_txt_path.parent.mkdir(parents=True, exist_ok=True)
+    with my_txt_path.open("a", encoding="utf-8") as f:
+        f.write(data.file_url + "\n")
+    print("Received file URL:", data.file_url)
+
+    try:
+        agent_knowledge.add_url(data.file_url)
+        print("Successfully added to knowledge base.")
+        return {"message": "File URL received and added to knowledge base."}
+    except Exception as e:
+        print(f"Error adding URL to knowledge base: {e}")
+        return {"message": "File URL received but failed to add to knowledge base."}
+
 
 if __name__ == "__main__":
     # Set to False after the knowledge base is loaded
