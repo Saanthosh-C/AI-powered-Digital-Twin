@@ -1,6 +1,6 @@
 """Agno Assist - Your Assistant for Agno Framework!
 
-Install dependencies: `pip install google-genai lancedb numpy pandas todoist-api-python tantivy elevenlabs sqlalchemy agno`
+Install dependencies: `uv pip install google-genai uvicorn lancedb numpy pandas todoist-api-python tantivy elevenlabs sqlalchemy agno`
 """
 
 from pathlib import Path
@@ -47,7 +47,7 @@ agent_knowledge = UrlKnowledge(
         uri=str(tmp_dir.joinpath("lancedb")),
         table_name="agno_assist_knowledge",
         search_type=SearchType.hybrid,
-        embedder=GeminiEmbedder(id="gemini-embedding-exp-03-07",api_key="AIzaSyCleH8Tjoza7TAMhQsxz-t8dj_jskc7nMw"),
+        embedder=GeminiEmbedder(id="text-embedding-004",api_key="AIzaSyCAp-TslheRfoHoAN-omWhu8fTf_qT3ew0"),
     ),
 )
 agent_storage = SqliteStorage(
@@ -57,7 +57,7 @@ agent_storage = SqliteStorage(
 
 agno_assist = Agent(
     name="Digital Twin",
-    model=Gemini(id="gemini-2.0-flash",api_key="AIzaSyCleH8Tjoza7TAMhQsxz-t8dj_jskc7nMw"),
+    model=Gemini(id="gemini-2.0-flash-lite",api_key="AIzaSyCAp-TslheRfoHoAN-omWhu8fTf_qT3ew0"),
     description=dedent("""\
        You are an AI-powered Digital Twin that mirrors a student's academic behavior, learning patterns, 
        and performance. Your purpose is to analyze historical data, predict future performance, 
